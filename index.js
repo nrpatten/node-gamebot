@@ -37,7 +37,7 @@ client.on('message', message => {
   const command = args.shift().toLowerCase();
 
   if (command === 'help') {
-    message.channel.send('```' + 'Commands are: \n!info for server info \n!players for a list of online players \n!stats for info/players \n!search for other server stats expample: !search 45.121.211.65 2302 \n!pubg for PUBG player stats example: !pubg AHappyTeddyBears' + '```');
+    message.channel.send('```' + 'Commands are: \n!info for server info \n!players for a list of online players \n!stats for info/players \n!search for other server stats expample: !search 45.121.211.65 2302 \n!pubg for SOLO !pubgduo for DUO !pubgsquad for SQUAD player stats example: !pubg AHappyTeddyBears' + '```');
   }
   /* Arma 3 Stats */
   if (command === 'info') {
@@ -152,7 +152,71 @@ client.on('message', message => {
       message.channel.send('```' + 'Error: ' + playerVar + ' not found for season 4 or server is busy. Try again later' + '```');
     });
   }
-  /* End PUBG Stats */
+
+  if (command === "pubgduo") {
+    var playerVar = args.slice(0, 1).join(' ');
+    if ( !playerVar || playerVar < 2 ) {
+      message.channel.send('Error! make sure you add a player name.\n' + '\nExample: `!pubg AHappyTeddyBears`');
+    } else
+    api.getProfileByNickname(playerVar)
+    .then((profile) => {
+      const data = profile.content;
+      const stats = profile.getStats({
+        region: REGION.ALL,
+        season: SEASON.EA2017pre4,
+        match: MATCH.DUO
+      });
+      message.channel.send('```' + stats.playerName + "'s DUO Stats" +
+      '\nPlayer Rank: ' + stats.rankData.rating +
+      '\nRounds Played: ' + stats.performance.roundsPlayed +
+      '\nTotal Kills: ' + stats.combat.kills +
+      '\nK/D Ratio: ' + stats.performance.killDeathRatio +
+      '\nHeadShot Kills: ' + stats.combat.headshotKills +
+      '\nHeadShot Kill Ratio: ' + stats.combat.headshotKillRatio + '%' +
+      '\nWins: ' + stats.performance.wins +
+      '\nWin Ratio: ' + stats.performance.winRatio + '%' +
+      '\nLosses: ' + stats.performance.losses +
+      '\nTop 10s: ' + stats.performance.top10s +
+      '\nTop 10 Ratio: ' + stats.performance.top10Ratio + '%' +
+      '```');
+    })
+    .catch((err) => {
+      message.channel.send('```' + 'Error: ' + playerVar + ' not found for season 4 or server is busy. Try again later' + '```');
+    });
+  }
+  
+  if (command === "pubgsquad") {
+    var playerVar = args.slice(0, 1).join(' ');
+    if ( !playerVar || playerVar < 2 ) {
+      message.channel.send('Error! make sure you add a player name.\n' + '\nExample: `!pubg AHappyTeddyBears`');
+    } else
+    api.getProfileByNickname(playerVar)
+    .then((profile) => {
+      const data = profile.content;
+      const stats = profile.getStats({
+        region: REGION.ALL,
+        season: SEASON.EA2017pre4,
+        match: MATCH.SQUAD
+      });
+      message.channel.send('```' + stats.playerName + "'s SQUAD Stats" +
+      '\nPlayer Rank: ' + stats.rankData.rating +
+      '\nRounds Played: ' + stats.performance.roundsPlayed +
+      '\nTotal Kills: ' + stats.combat.kills +
+      '\nK/D Ratio: ' + stats.performance.killDeathRatio +
+      '\nHeadShot Kills: ' + stats.combat.headshotKills +
+      '\nHeadShot Kill Ratio: ' + stats.combat.headshotKillRatio + '%' +
+      '\nWins: ' + stats.performance.wins +
+      '\nWin Ratio: ' + stats.performance.winRatio + '%' +
+      '\nLosses: ' + stats.performance.losses +
+      '\nTop 10s: ' + stats.performance.top10s +
+      '\nTop 10 Ratio: ' + stats.performance.top10Ratio + '%' +
+      '```');
+    })
+    .catch((err) => {
+      message.channel.send('```' + 'Error: ' + playerVar + ' not found for season 4 or server is busy. Try again later' + '```');
+    });
+  }
+/* End PUBG Stats */
 });
 
 client.login(clientToken);
