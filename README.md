@@ -5,6 +5,8 @@
 
 * Goto https://discordapp.com/developers/docs/intro click Applications > My Apps on the left hand side.
  * Click New App and set up your bot, Under 'APP BOT USER' copy the token this is the token for clientToken.
+ * Under BOT DETAILS copy ClientID
+ * Add your ClientID to this link where it says YourClientID https://discordapp.com/oauth2/authorize?&client_id=YourClientID&scope=bot&permissions=0
  * Edit index.js
  * Add your `clientToken` to line 5
  * Add your server ip to `YorServerIP` on line 8
