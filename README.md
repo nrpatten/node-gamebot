@@ -3,7 +3,7 @@
 
 ### Setup:
 
-* Goto https://discordapp.com/developers/docs/intro click Applications > My Apps on te left and side.
+* Goto https://discordapp.com/developers/docs/intro click Applications > My Apps on the left hand side.
  * Click New App and set up your bot, Under 'APP BOT USER' copy the token this is the token for clientToken.
  * Edit index.js
  * Add your `clientToken` to line 5
