@@ -2,6 +2,7 @@
 -------------
 
 ### Setup:
+[![Known Vulnerabilities](https://snyk.io/test/github/nrpatten/node-gamebot/badge.svg)](https://snyk.io/test/github/nrpatten/node-gamebot)
 
 * Goto https://discordapp.com/developers/docs/intro click Applications > My Apps on the left hand side.
  * Click New App and set up your bot, Under 'APP BOT USER' copy the token this is the token for clientToken.
