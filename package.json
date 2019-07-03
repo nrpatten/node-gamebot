@@ -6,12 +6,15 @@
   "dependencies": {
     "discord.js": "^11.2.0",
     "gamedig": "^1.0.37",
-    "pubg-api-redis": "^3.6.0"
+    "pubg-api-redis": "^3.6.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index"
+    "start": "node index",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -28,5 +31,6 @@
     "pubg",
     "discord",
     "stats"
-  ]
+  ],
+  "snyk": true
 }

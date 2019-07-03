@@ -1,0 +1,10 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - pubg-api-redis > lodash:
+        patched: '2019-07-03T21:11:49.379Z'
+    - pubg-api-redis > request-promise > request-promise-core > lodash:
+        patched: '2019-07-03T21:11:49.379Z'
