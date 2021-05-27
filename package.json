@@ -4,7 +4,7 @@
   "description": "Discord Game Stats Bot",
   "main": "index.js",
   "dependencies": {
-    "discord.js": "^11.2.0",
+    "discord.js": "^12.0.0",
     "gamedig": "^1.0.37",
     "pubg-api-redis": "^3.6.0"
   },
